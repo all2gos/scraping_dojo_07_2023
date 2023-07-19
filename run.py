@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
 #core of the program: the function that extracts all quotes from a given website
-def scrapping(url, proxy):
+def scraping(url, proxy):
     page = requests.get(url, proxies = {'https':proxy, 'http:':proxy})
     soup = BeautifulSoup(page.content, 'html.parser')
     
@@ -42,9 +42,9 @@ if __name__ == '__main__':
     INPUT_URL=os.getenv('INPUT_URL')
     OUTPUT_FILE=os.getenv('OUTPUT_FILE')
 
-    #scrapping and saving results to jsonl file    
-    scrapped_quotes = rearranging(scrapping(url = INPUT_URL, proxy = PROXY))
-    save_file(scrapped_quotes)
+    #scraping and saving results to jsonl file    
+    scraped_quotes = rearranging(scraping(url = INPUT_URL, proxy = PROXY))
+    save_file(scraped_quotes)
 
     print(f'File {OUTPUT_FILE} has been succesfully created.')
 
